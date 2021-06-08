@@ -89,8 +89,7 @@
       </div>
     </div>
   </div>
-  <div class="home_content">
-This is 
+  <div class="home_content"> 
   </div>
 
   <script>
@@ -120,7 +119,13 @@ This is
         this.className += " act";
        });
    }
-
+   $.ajax({
+            url:'main',
+            method:'GET',
+            success:function(response){
+                $('.home_content').html(response);
+            }
+        });
   dashboard.click(function(){
         $.ajax({
             url:'main',
