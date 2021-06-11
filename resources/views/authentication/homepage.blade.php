@@ -9,6 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="csrf-token" content="{{ csrf_token() }}" />
    </head>
 <body>
   <div class="sidebar" id = "sidebar">
@@ -93,6 +94,11 @@
   </div>
 
   <script>
+     $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+    });
    let btn = document.querySelector("#btn");
    let sidebar = document.querySelector(".sidebar");
    let searchBtn = document.querySelector(".bx-search");
@@ -119,9 +125,11 @@
         this.className += " act";
        });
    }
+
    $.ajax({
             url:'main',
             method:'GET',
+            data:{id:1},
             success:function(response){
                 $('.home_content').html(response);
             }
@@ -130,12 +138,63 @@
         $.ajax({
             url:'main',
             method:'GET',
+            data:{id: 1},
             success:function(response){
                 $('.home_content').html(response);
             }
         });
   });
-
+  
+  profile.click(function(){
+        $.ajax({
+            url:'main',
+            method:'GET',
+            data:{id: 2},
+            success:function(response){
+                $('.home_content').html(response);
+            }
+        });
+  });
+  todo.click(function(){
+        $.ajax({
+            url:'main',
+            method:'GET',
+            data:{id: 3},
+            success:function(response){
+                $('.home_content').html(response);
+            }
+        });
+  });
+  media.click(function(){
+        $.ajax({
+            url:'main',
+            method:'GET',
+            data:{id: 4},
+            success:function(response){
+                $('.home_content').html(response);
+            }
+        });
+  });
+  blog.click(function(){
+        $.ajax({
+            url:'main',
+            method:'GET',
+            data:{id: 5},
+            success:function(response){
+                $('.home_content').html(response);
+            }
+        });
+  });
+  saved.click(function(){
+        $.ajax({
+            url:'main',
+            method:'GET',
+            data:{id: 6},
+            success:function(response){
+                $('.home_content').html(response);
+            }
+        });
+  });
 //   profile.click(function(){
 //     dashboard.attr('class','');
 //     profile.attr('class','active');
