@@ -13,4 +13,12 @@ class Media extends Model
         $result = DB::table('media')->get();
         return $result;
     }
+    public function upload_media($description,$extension){
+        $result = DB::table('media')->insert(['description'=>$description,'filetype'=>$extension]);
+        $id = DB::table('media')->max('id');
+        $data = array(
+            'id'=>$id,
+            'result'=>$result);
+        return $data;
+    }
 }
